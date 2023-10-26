@@ -9,7 +9,7 @@ class TugasBloc {
     var response = await Api().get(apiUrl);
     var jsonObj = json.decode(response.body);
     List<dynamic> listTugas = (jsonObj as Map<String, dynamic>)['result'];
-    List<Tugas> tugass = [] ;
+    List<Tugas> tugass = [];
     for (int i = 0; i < listTugas.length; i++) {
       tugass.add(Tugas.fromJson(listTugas[i]));
     }
@@ -30,19 +30,20 @@ class TugasBloc {
     return jsonObj['status'];
   }
 
-  // static Future<bool> updateTugas({required Tugas tugas}) async {
-  //   String apiUrl = ApiUrl.updateTugas(tugas.id!);
+  static Future<bool> updateTugas({required Tugas tugas}) async {
+    String apiUrl = ApiUrl.updateTugas(tugas.id!);
 
-  //   var body = {
-  //     "title": tugas.title,
-  //     "description": tugas.description,
-  //     "deadline": tugas.deadline
-  //   };
-  //   print("Body : $body");
-  //   var response = await Api().post(apiUrl, body);
-  //   var jsonObj = json.decode(response.body);
-  //   return jsonObj['result'];
-  // }
+    var body = {
+      "title": tugas.title,
+      "description": tugas.description,
+      "deadline": tugas.deadline
+    };
+    print("Body : $body");
+    var response = await Api().post(apiUrl, body);
+    var jsonObj = json.decode(response.body);
+    
+    return true;
+  }
 
   static Future<bool> deleteTugas({int? id}) async {
     String apiUrl = ApiUrl.deleteTugas(id!);

@@ -30,18 +30,18 @@ class _TugasFormState extends State<TugasForm> {
   }
 
   isUpdate() {
-    // if (widget.tugas != null) {
-    //   setState(() {
-    //     judul = "UBAH TUGAS";
-    //     tombolSubmit = "UBAH";
-    //     _titleTextboxController.text = widget.tugas!.title!;
-    //     _descriptionTextboxController.text = widget.tugas!.description!;
-    //     _deadlineTextboxController.text = widget.tugas!.deadline!;
-    //   });
-    // } else {
+    if (widget.tugas != null) {
+      setState(() {
+        judul = "UBAH TUGAS";
+        tombolSubmit = "UBAH";
+        _titleTextboxController.text = widget.tugas!.title!;
+        _descriptionTextboxController.text = widget.tugas!.description!;
+        _deadlineTextboxController.text = widget.tugas!.deadline!;
+      });
+    } else {
       judul = "TAMBAH TUGAS";
       tombolSubmit = "SIMPAN";
-    // }
+    }
   }
 
   @override
@@ -116,11 +116,11 @@ class _TugasFormState extends State<TugasForm> {
         var validate = _formKey.currentState!.validate();
         if (validate) {
           if (!_isLoading) {
-            // if (widget.tugas != null) {
-            //   ubah();
-            // } else {
+            if (widget.tugas != null) {
+              ubah();
+            } else {
               simpan();
-            // }
+            }
           }
         }
       },
@@ -156,31 +156,31 @@ class _TugasFormState extends State<TugasForm> {
   }
 
   ubah() {
-    // setState(() {
-    //   _isLoading = true;
-    // });
+    setState(() {
+      _isLoading = true;
+    });
 
-    // Tugas updateTugas = Tugas(id: null);
-    // updateTugas.id = widget.tugas!.id;
-    // updateTugas.title = _titleTextboxController.text;
-    // updateTugas.description = _descriptionTextboxController.text;
-    // updateTugas.deadline = _deadlineTextboxController.text;
+    Tugas updateTugas = Tugas(id: null);
+    updateTugas.id = widget.tugas!.id;
+    updateTugas.title = _titleTextboxController.text;
+    updateTugas.description = _descriptionTextboxController.text;
+    updateTugas.deadline = _deadlineTextboxController.text;
 
-    // TugasBloc.updateTugas(tugas: updateTugas).then((value) {
-    //   Navigator.of(context).push(MaterialPageRoute(
-    //     builder: (BuildContext context) => const TugasPage(),
-    //   ));
-    // }, onError: (error) {
-    //   showDialog(
-    //     context: context,
-    //     builder: (BuildContext context) => const WarningDialog(
-    //       description: "Permintaan ubah data gagal, silahkan coba lagi",
-    //     ),
-    //   );
-    // });
+    TugasBloc.updateTugas(tugas: updateTugas).then((value) {
+      Navigator.of(context).push(MaterialPageRoute(
+        builder: (BuildContext context) => const TugasPage(),
+      ));
+    }, onError: (error) {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) => const WarningDialog(
+          description: "Permintaan ubah data gagal, silahkan coba lagi",
+        ),
+      );
+    });
 
-    // setState(() {
-    //   _isLoading = false;
-    // });
+    setState(() {
+      _isLoading = false;
+    });
   }
 }

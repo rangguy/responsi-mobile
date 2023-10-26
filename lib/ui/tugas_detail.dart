@@ -47,19 +47,19 @@ class _TugasDetailState extends State<TugasDetail> {
       mainAxisSize: MainAxisSize.min,
       children: [
         // Tombol Edit
-        // OutlinedButton(
-        //   child: const Text("EDIT"),
-        //   onPressed: () {
-        //     Navigator.push(
-        //       context,
-        //       MaterialPageRoute(
-        //         builder: (context) => TugasForm(
-        //           tugas: widget.tugas!,
-        //         ),
-        //       ),
-        //     );
-        //   },
-        // ),
+        OutlinedButton(
+          child: const Text("EDIT"),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => TugasForm(
+                  tugas: widget.tugas!,
+                ),
+              ),
+            );
+          },
+        ),
         // Tombol Hapus
         OutlinedButton(
           child: const Text("DELETE"),
